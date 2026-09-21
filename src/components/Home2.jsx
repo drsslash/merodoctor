@@ -114,7 +114,7 @@ function Home2() {
         {/* Google Play */}
         <div className="text-center mt-8">
           <div className="inline-block border border-gray-600 rounded-lg px-6 py-3 bg-white">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 cursor-pointer">
             Read all reviews on Google Play ↗
           </p>
           </div>
