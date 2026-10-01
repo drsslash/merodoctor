@@ -359,7 +359,7 @@ function FindDoctor({ setPage }) {
               {t("findDoctor.trustedCare")}
             </p>
 
-            <h1
+            <p
               className="
                 !text-[30px]
                 !leading-[40px]
@@ -369,7 +369,7 @@ function FindDoctor({ setPage }) {
               "
             >
               {t("findDoctor.title")}
-            </h1>
+            </p>
 
             <p
               className="
@@ -390,7 +390,7 @@ function FindDoctor({ setPage }) {
           <div
             className="
               w-full
-              lg:w-[700px]
+              lg:w-[600px]
               bg-white
               rounded-xl
               p-3

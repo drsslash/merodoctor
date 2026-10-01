@@ -110,39 +110,14 @@ function HospitalAppointments({ setPage }) {
 
               <p
                 className="
-                  !text-[12px]
-                  !leading-[16px]
-                  !font-semibold
-                  !mb-1
-                  text-[#f5224b]
-                  uppercase
-                "
-              >
-                {t("hospitalPage.trustedCare")}
-              </p>
-
-              <h1
-                className="
-                  !text-[30px]
-                  !leading-[40px]
+                  !text-[17px]
+                  !leading-[20px]
                   !font-semibold
                   !text-white
-                  !mb-1
+                 
                 "
               >
                 {t("hospitalPage.title")}
-              </h1>
-
-              <p
-                className="
-                  !text-[16px]
-                  !leading-[24px]
-                  !font-normal
-                  !text-gray-300
-                  !mb-1
-                "
-              >
-                {t("hospitalPage.description")}
               </p>
 
             </div>
@@ -152,7 +127,7 @@ function HospitalAppointments({ setPage }) {
             <div
               className="
                 w-full
-                lg:w-[700px]
+                lg:w-[600px]
                 bg-white
                 rounded-xl
                 p-3
