@@ -1,133 +1,319 @@
 import React, { useState } from "react";
-import { Card, Button, Input, Empty } from "antd";
+import { Card, Button, Input, Select, Empty, Slider } from "antd";
 import {
   SearchOutlined,
   CalendarOutlined,
   ClockCircleOutlined,
   UserOutlined,
+  FilterOutlined,
+  ReloadOutlined,
 } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+
+import Footer from "./Footer";
 
 const doctors = [
   {
     id: 1,
     name: "Dr. Anisha Sharma",
     specialty: "Dermatologist",
-    experience: "8 years experience",
-    fee: "Rs. 800",
+    experienceYears: 8,
+    feeValue: 800,
     availability: "Available today",
     time: "10:00 AM - 5:00 PM",
+    gender: "Female",
   },
   {
     id: 2,
     name: "Dr. Ramesh Thapa",
     specialty: "Cardiologist",
-    experience: "12 years experience",
-    fee: "Rs. 1,200",
+    experienceYears: 12,
+    feeValue: 1200,
     availability: "Available today",
     time: "11:00 AM - 4:00 PM",
+    gender: "Male",
   },
   {
     id: 3,
     name: "Dr. Priya Karki",
     specialty: "Pediatrician",
-    experience: "6 years experience",
-    fee: "Rs. 700",
+    experienceYears: 6,
+    feeValue: 700,
     availability: "Available tomorrow",
     time: "9:00 AM - 3:00 PM",
+    gender: "Female",
   },
   {
     id: 4,
     name: "Dr. Suman Adhikari",
     specialty: "General Physician",
-    experience: "10 years experience",
-    fee: "Rs. 600",
+    experienceYears: 10,
+    feeValue: 600,
     availability: "Available today",
     time: "12:00 PM - 6:00 PM",
+    gender: "Male",
   },
   {
     id: 5,
     name: "Dr. Nisha Gurung",
     specialty: "Gynecologist",
-    experience: "9 years experience",
-    fee: "Rs. 1,000",
+    experienceYears: 9,
+    feeValue: 1000,
     availability: "Available tomorrow",
     time: "10:00 AM - 2:00 PM",
+    gender: "Female",
   },
   {
     id: 6,
     name: "Dr. Bikash Shrestha",
     specialty: "Orthopedic",
-    experience: "15 years experience",
-    fee: "Rs. 1,300",
+    experienceYears: 15,
+    feeValue: 1300,
     availability: "Available today",
     time: "1:00 PM - 5:00 PM",
+    gender: "Male",
   },
   {
     id: 7,
     name: "Dr. Aarav Joshi",
     specialty: "Neurologist",
-    experience: "11 years experience",
-    fee: "Rs. 1,500",
+    experienceYears: 11,
+    feeValue: 1500,
     availability: "Available today",
     time: "9:00 AM - 2:00 PM",
+    gender: "Male",
   },
   {
     id: 8,
     name: "Dr. Maya Shrestha",
     specialty: "ENT Specialist",
-    experience: "7 years experience",
-    fee: "Rs. 900",
+    experienceYears: 7,
+    feeValue: 900,
     availability: "Available tomorrow",
     time: "10:00 AM - 4:00 PM",
+    gender: "Female",
   },
   {
     id: 9,
     name: "Dr. Kiran Maharjan",
     specialty: "Psychiatrist",
-    experience: "13 years experience",
-    fee: "Rs. 1,100",
+    experienceYears: 13,
+    feeValue: 1100,
     availability: "Available today",
     time: "2:00 PM - 7:00 PM",
+    gender: "Male",
   },
   {
     id: 10,
     name: "Dr. Sneha Rai",
     specialty: "Ophthalmologist",
-    experience: "8 years experience",
-    fee: "Rs. 850",
+    experienceYears: 8,
+    feeValue: 850,
     availability: "Available today",
     time: "11:00 AM - 5:00 PM",
+    gender: "Female",
   },
   {
     id: 11,
     name: "Dr. Rajan KC",
     specialty: "Dentist",
-    experience: "10 years experience",
-    fee: "Rs. 700",
+    experienceYears: 10,
+    feeValue: 700,
     availability: "Available tomorrow",
     time: "9:00 AM - 1:00 PM",
+    gender: "Male",
   },
   {
     id: 12,
     name: "Dr. Sita Poudel",
     specialty: "Nutritionist",
-    experience: "6 years experience",
-    fee: "Rs. 600",
+    experienceYears: 6,
+    feeValue: 600,
     availability: "Available today",
     time: "10:00 AM - 3:00 PM",
+    gender: "Female",
   },
 ];
 
 function FindDoctor({ setPage }) {
+  const { t } = useTranslation();
+
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
 
-  const filteredDoctors = doctors.filter((doctor) => {
-    return (
-      doctor.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      doctor.specialty.toLowerCase().includes(searchText.toLowerCase())
-    );
-  });
+  const [selectedSpecialty, setSelectedSpecialty] = useState("All");
+  const [selectedAvailability, setSelectedAvailability] = useState("All");
+  const [selectedGender, setSelectedGender] = useState("All");
+  const [selectedExperience, setSelectedExperience] = useState("All");
+
+  const [maxFee, setMaxFee] = useState(2000);
+  const [sortBy, setSortBy] = useState("default");
+
+  const [showFilters, setShowFilters] = useState(false);
+
+  // ================= SPECIALTY OPTIONS =================
+
+  const specialtyOptions = [
+    {
+      label: t("findDoctor.allSpecialties"),
+      value: "All",
+    },
+    ...Array.from(
+      new Set(doctors.map((doctor) => doctor.specialty))
+    ).map((specialty) => ({
+      label: t(
+        `findDoctor.specialties.${specialty}`
+      ),
+      value: specialty,
+    })),
+  ];
+
+  // ================= AVAILABILITY OPTIONS =================
+
+  const availabilityOptions = [
+    {
+      label: t("findDoctor.allAvailability"),
+      value: "All",
+    },
+    {
+      label: t("findDoctor.availableToday"),
+      value: "Available today",
+    },
+    {
+      label: t("findDoctor.availableTomorrow"),
+      value: "Available tomorrow",
+    },
+  ];
+
+  // ================= GENDER OPTIONS =================
+
+  const genderOptions = [
+    {
+      label: t("findDoctor.allGenders"),
+      value: "All",
+    },
+    {
+      label: t("findDoctor.female"),
+      value: "Female",
+    },
+    {
+      label: t("findDoctor.male"),
+      value: "Male",
+    },
+  ];
+
+  // ================= EXPERIENCE OPTIONS =================
+
+  const experienceOptions = [
+    {
+      label: t("findDoctor.allExperience"),
+      value: "All",
+    },
+    {
+      label: t("findDoctor.fivePlusYears"),
+      value: "5",
+    },
+    {
+      label: t("findDoctor.tenPlusYears"),
+      value: "10",
+    },
+  ];
+
+  // ================= SORT OPTIONS =================
+
+  const sortOptions = [
+    {
+      label: t("findDoctor.defaultSort"),
+      value: "default",
+    },
+    {
+      label: t("findDoctor.feeLowToHigh"),
+      value: "fee-asc",
+    },
+    {
+      label: t("findDoctor.feeHighToLow"),
+      value: "fee-desc",
+    },
+    {
+      label: t("findDoctor.experienceHighToLow"),
+      value: "exp-desc",
+    },
+  ];
+
+  // ================= RESET =================
+
+  const handleResetFilters = () => {
+    setSelectedSpecialty("All");
+    setSelectedAvailability("All");
+    setSelectedGender("All");
+    setSelectedExperience("All");
+    setMaxFee(2000);
+    setSortBy("default");
+    setSearch("");
+    setSearchText("");
+  };
+
+  // ================= FILTER =================
+
+  const filteredDoctors = doctors
+    .filter((doctor) => {
+      const matchesSearch =
+        doctor.name
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
+        doctor.specialty
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+
+      const matchesSpecialty =
+        selectedSpecialty === "All" ||
+        doctor.specialty === selectedSpecialty;
+
+      const matchesAvailability =
+        selectedAvailability === "All" ||
+        doctor.availability === selectedAvailability;
+
+      const matchesGender =
+        selectedGender === "All" ||
+        doctor.gender === selectedGender;
+
+      const matchesExperience =
+        selectedExperience === "All" ||
+        doctor.experienceYears >=
+          parseInt(selectedExperience);
+
+      const matchesFee =
+        doctor.feeValue <= maxFee;
+
+      return (
+        matchesSearch &&
+        matchesSpecialty &&
+        matchesAvailability &&
+        matchesGender &&
+        matchesExperience &&
+        matchesFee
+      );
+    })
+    .sort((a, b) => {
+      if (sortBy === "fee-asc") {
+        return a.feeValue - b.feeValue;
+      }
+
+      if (sortBy === "fee-desc") {
+        return b.feeValue - a.feeValue;
+      }
+
+      if (sortBy === "exp-desc") {
+        return (
+          b.experienceYears -
+          a.experienceYears
+        );
+      }
+
+      return 0;
+    });
+
+  // ================= SEARCH =================
 
   const handleSearch = () => {
     setSearchText(search);
@@ -136,7 +322,7 @@ function FindDoctor({ setPage }) {
   return (
     <div className="min-h-screen bg-[#f5f7f9]">
 
-      {/* ================= TOP GRAY SECTION ================= */}
+      {/* ================= HERO ================= */}
 
       <div className="w-full bg-gray-700 pt-28 pb-10">
 
@@ -156,11 +342,10 @@ function FindDoctor({ setPage }) {
           "
         >
 
-          {/* ================= LEFT SIDE - HEADER ================= */}
+          {/* Hero Text */}
 
           <div className="flex-1 text-left w-full">
 
-            {/* Overline */}
             <p
               className="
                 !text-[12px]
@@ -171,23 +356,21 @@ function FindDoctor({ setPage }) {
                 uppercase
               "
             >
-              TRUSTED CARE
+              {t("findDoctor.trustedCare")}
             </p>
 
-            {/* Heading H2 */}
             <h1
               className="
-                !text-[32px]
+                !text-[30px]
                 !leading-[40px]
                 !font-semibold
                 !text-white
                 !mb-1
               "
             >
-              Find a doctor and book a time
+              {t("findDoctor.title")}
             </h1>
 
-            {/* Body Medium */}
             <p
               className="
                 !text-[16px]
@@ -197,12 +380,12 @@ function FindDoctor({ setPage }) {
                 !mb-1
               "
             >
-              Search by name, specialty or symptom, then pick the next open slot
+              {t("findDoctor.description")}
             </p>
 
           </div>
 
-          {/* ================= RIGHT SIDE - SEARCH ================= */}
+          {/* Search */}
 
           <div
             className="
@@ -228,9 +411,13 @@ function FindDoctor({ setPage }) {
             <Input
               size="large"
               prefix={<SearchOutlined />}
-              placeholder="Search by doctor name or specialty"
+              placeholder={t(
+                "findDoctor.searchPlaceholder"
+              )}
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) =>
+                setSearch(e.target.value)
+              }
               className="
                 flex-1
                 !text-[16px]
@@ -255,16 +442,14 @@ function FindDoctor({ setPage }) {
                 !font-semibold
               "
             >
-              Search
+              {t("findDoctor.search")}
             </Button>
 
           </div>
-
         </div>
-
       </div>
 
-      {/* ================= DOCTORS SECTION ================= */}
+      {/* ================= MAIN CONTENT ================= */}
 
       <div
         className="
@@ -280,11 +465,185 @@ function FindDoctor({ setPage }) {
 
         <div className="w-full">
 
-          {/* ================= DOCTOR COUNT ================= */}
+          {/* ================= FILTER BAR ================= */}
+
+          <div className="flex items-center justify-between mb-4">
+
+            <Button
+              icon={<FilterOutlined />}
+              onClick={() =>
+                setShowFilters(!showFilters)
+              }
+              className="
+                !flex
+                !items-center
+                !gap-2
+                !font-medium
+              "
+            >
+              {showFilters
+                ? t("findDoctor.hideFilters")
+                : t("findDoctor.filter")}
+            </Button>
+
+            <Button
+              icon={<ReloadOutlined />}
+              onClick={handleResetFilters}
+              className="
+                !flex
+                !items-center
+                !gap-2
+                text-gray-600
+                hover:text-[#f5224b]
+              "
+            >
+              {t("findDoctor.resetFilters")}
+            </Button>
+
+          </div>
+
+          {/* ================= FILTER PANEL ================= */}
+
+          {showFilters && (
+            <div
+              className="
+                bg-white
+                p-5
+                rounded-xl
+                shadow-sm
+                mb-6
+                flex
+                flex-col
+                gap-4
+                transition-all
+                duration-300
+              "
+            >
+
+              <div className="flex items-center gap-2 text-gray-700 font-medium">
+
+                <FilterOutlined />
+
+                <span>
+                  {t("findDoctor.advancedFilters")}
+                </span>
+
+              </div>
+
+              <div
+                className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  lg:grid-cols-5
+                  gap-3
+                  w-full
+                "
+              >
+
+                <Select
+                  size="large"
+                  value={selectedSpecialty}
+                  onChange={(value) =>
+                    setSelectedSpecialty(value)
+                  }
+                  options={specialtyOptions}
+                  className="w-full"
+                />
+
+                <Select
+                  size="large"
+                  value={selectedAvailability}
+                  onChange={(value) =>
+                    setSelectedAvailability(value)
+                  }
+                  options={availabilityOptions}
+                  className="w-full"
+                />
+
+                <Select
+                  size="large"
+                  value={selectedGender}
+                  onChange={(value) =>
+                    setSelectedGender(value)
+                  }
+                  options={genderOptions}
+                  className="w-full"
+                />
+
+                <Select
+                  size="large"
+                  value={selectedExperience}
+                  onChange={(value) =>
+                    setSelectedExperience(value)
+                  }
+                  options={experienceOptions}
+                  className="w-full"
+                />
+
+                <Select
+                  size="large"
+                  value={sortBy}
+                  onChange={(value) =>
+                    setSortBy(value)
+                  }
+                  options={sortOptions}
+                  className="w-full"
+                />
+
+              </div>
+
+              {/* Fee Slider */}
+
+              <div
+                className="
+                  flex
+                  flex-col
+                  sm:flex-row
+                  items-start
+                  sm:items-center
+                  justify-between
+                  gap-2
+                  pt-2
+                  border-t
+                  border-gray-100
+                "
+              >
+
+                <span className="
+                  text-[14px]
+                  leading-[20px]
+                  text-gray-600
+                  font-medium
+                ">
+                  {t("findDoctor.maxConsultationFee", {
+                    amount: maxFee,
+                  })}
+                </span>
+
+                <div className="w-full sm:w-72">
+
+                  <Slider
+                    min={500}
+                    max={2000}
+                    step={50}
+                    value={maxFee}
+                    onChange={(value) =>
+                      setMaxFee(value)
+                    }
+                  />
+
+                </div>
+
+              </div>
+
+            </div>
+          )}
+
+          {/* ================= RESULTS ================= */}
 
           <div className="mb-5">
 
-            {/* Heading H5 */}
             <h2
               className="
                 text-[20px]
@@ -293,10 +652,9 @@ function FindDoctor({ setPage }) {
                 text-[#243b49]
               "
             >
-              Available doctors
+              {t("findDoctor.availableDoctors")}
             </h2>
 
-            {/* Body Small */}
             <p
               className="
                 text-[14px]
@@ -306,12 +664,14 @@ function FindDoctor({ setPage }) {
                 mt-1
               "
             >
-              {filteredDoctors.length} doctors found
+              {t("findDoctor.doctorsFound", {
+                count: filteredDoctors.length,
+              })}
             </p>
 
           </div>
 
-          {/* ================= DOCTOR CARDS ================= */}
+          {/* ================= DOCTORS ================= */}
 
           {filteredDoctors.length > 0 ? (
 
@@ -333,12 +693,21 @@ function FindDoctor({ setPage }) {
                   key={doctor.id}
                   bordered={false}
                   className="rounded-2xl shadow-sm"
-                  bodyStyle={{ padding: "20px" }}
+                  bodyStyle={{
+                    padding: "20px",
+                  }}
                 >
 
-                  {/* ================= DOCTOR AVATAR ================= */}
+                  {/* Doctor Header */}
 
-                  <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                      mb-5
+                    "
+                  >
 
                     <div
                       className="
@@ -361,7 +730,6 @@ function FindDoctor({ setPage }) {
 
                     <div className="min-w-0">
 
-                      {/* Heading H6 */}
                       <h3
                         className="
                           text-[18px]
@@ -374,7 +742,6 @@ function FindDoctor({ setPage }) {
                         {doctor.name}
                       </h3>
 
-                      {/* Body Small */}
                       <p
                         className="
                           text-[14px]
@@ -384,14 +751,16 @@ function FindDoctor({ setPage }) {
                           mt-1
                         "
                       >
-                        {doctor.specialty}
+                        {t(
+                          `findDoctor.specialties.${doctor.specialty}`
+                        )}
                       </p>
 
                     </div>
 
                   </div>
 
-                  {/* ================= EXPERIENCE ================= */}
+                  {/* Experience */}
 
                   <p
                     className="
@@ -402,10 +771,16 @@ function FindDoctor({ setPage }) {
                       !mb-4
                     "
                   >
-                    {doctor.experience}
+                    {t(
+                      "findDoctor.yearsExperience",
+                      {
+                        count:
+                          doctor.experienceYears,
+                      }
+                    )}
                   </p>
 
-                  {/* ================= AVAILABILITY ================= */}
+                  {/* Availability */}
 
                   <div className="space-y-3 mb-5">
 
@@ -423,7 +798,9 @@ function FindDoctor({ setPage }) {
                       <CalendarOutlined />
 
                       <span>
-                        {doctor.availability}
+                        {t(
+                          `findDoctor.availability.${doctor.availability}`
+                        )}
                       </span>
                     </div>
 
@@ -447,11 +824,18 @@ function FindDoctor({ setPage }) {
 
                   </div>
 
-                  {/* ================= CONSULTATION FEE ================= */}
+                  {/* Consultation Fee */}
 
-                  <div className="flex items-center justify-between gap-2 mb-5">
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-2
+                      mb-5
+                    "
+                  >
 
-                    {/* Body Small */}
                     <span
                       className="
                         text-[14px]
@@ -460,10 +844,11 @@ function FindDoctor({ setPage }) {
                         text-gray-500
                       "
                     >
-                      Consultation fee
+                      {t(
+                        "findDoctor.consultationFee"
+                      )}
                     </span>
 
-                    {/* Body Large Strong */}
                     <span
                       className="
                         text-[18px]
@@ -473,17 +858,22 @@ function FindDoctor({ setPage }) {
                         whitespace-nowrap
                       "
                     >
-                      {doctor.fee}
+                      Rs.{" "}
+                      {doctor.feeValue.toLocaleString()}
                     </span>
 
                   </div>
 
-                  {/* ================= BOOK BUTTON ================= */}
+                  {/* Book Appointment */}
 
                   <Button
                     type="primary"
                     block
-                    onClick={() => setPage("book-appointment")}
+                    onClick={() =>
+                      setPage(
+                        "book-appointment"
+                      )
+                    }
                     className="
                       !h-9
                       !rounded-lg
@@ -494,7 +884,9 @@ function FindDoctor({ setPage }) {
                       !font-semibold
                     "
                   >
-                    Book appointment
+                    {t(
+                      "findDoctor.bookAppointment"
+                    )}
                   </Button>
 
                 </Card>
@@ -507,7 +899,11 @@ function FindDoctor({ setPage }) {
 
             <div className="bg-white rounded-xl p-8 sm:p-12">
 
-              <Empty description="No doctors found" />
+              <Empty
+                description={t(
+                  "findDoctor.noDoctorsFound"
+                )}
+              />
 
             </div>
 
@@ -516,6 +912,10 @@ function FindDoctor({ setPage }) {
         </div>
 
       </div>
+
+      {/* ================= FOOTER ================= */}
+
+      <Footer />
 
     </div>
   );

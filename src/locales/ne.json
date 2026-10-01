@@ -8,6 +8,18 @@
   "bookhospital" : "अस्पतालमा भेटको समय लिनुहोस्"
   },
 
+  "hospitalPage": {
+    "trustedCare": "विश्वसनीय स्वास्थ्य सेवा",
+    "title": "अस्पताल खोज्नुहोस् र अपोइन्टमेन्ट बुक गर्नुहोस्",
+    "description": "अस्पतालको नाम, स्थान वा फोन नम्बरबाट खोज्नुहोस्।",
+    "searchPlaceholder": "नाम वा स्थानबाट अस्पताल खोज्नुहोस्",
+    "search": "खोज्नुहोस्",
+    "availableHospitals": "उपलब्ध अस्पतालहरू",
+    "hospitalsFound": "{{count}} वटा अस्पताल भेटिए",
+    "bookAppointment": "अपोइन्टमेन्ट बुक गर्नुहोस्",
+    "noHospitals": "कुनै अस्पताल भेटिएन।"
+  },
+
   "home": {
     "title": "डाक्टरलाई भेट्नुहोस्",
     "titleLine2": "घरबाट बाहिर ननिस्की",
@@ -255,5 +267,68 @@
     "previous": "अघिल्लो",
     "next": "अर्को",
     "goToImage": "{{number}} नम्बरको तस्बिरमा जानुहोस्"
+  },
+  "findDoctor": {
+    "trustedCare": "विश्वसनीय स्वास्थ्य सेवा",
+    "title": "डाक्टर खोज्नुहोस् र समय बुक गर्नुहोस्",
+    "description": "नाम, विशेषज्ञता वा लक्षणबाट खोज्नुहोस् र उपलब्ध समय रोज्नुहोस्",
+    "searchPlaceholder": "डाक्टरको नाम वा विशेषज्ञताबाट खोज्नुहोस्",
+    "search": "खोज्नुहोस्",
+
+    "filter": "फिल्टर",
+    "hideFilters": "फिल्टर लुकाउनुहोस्",
+    "resetFilters": "फिल्टर रिसेट गर्नुहोस्",
+    "advancedFilters": "उन्नत फिल्टर:",
+
+    "allSpecialties": "सबै विशेषज्ञता",
+    "allAvailability": "सबै उपलब्धता",
+    "allGenders": "सबै लिङ्ग",
+    "allExperience": "सबै अनुभव",
+
+    "availableToday": "आज उपलब्ध",
+    "availableTomorrow": "भोलि उपलब्ध",
+
+    "female": "महिला",
+    "male": "पुरुष",
+
+    "fivePlusYears": "५+ वर्ष",
+    "tenPlusYears": "१०+ वर्ष",
+
+    "defaultSort": "पूर्वनिर्धारित क्रम",
+    "feeLowToHigh": "शुल्क: कमदेखि बढी",
+    "feeHighToLow": "शुल्क: बढीदेखि कम",
+    "experienceHighToLow": "अनुभव: बढीदेखि कम",
+
+    "maxConsultationFee": "अधिकतम परामर्श शुल्क: रु. {{amount}}",
+
+    "availableDoctors": "उपलब्ध डाक्टरहरू",
+    "doctorsFound": "{{count}} जना डाक्टर भेटिए",
+
+    "yearsExperience": "{{count}} वर्षको अनुभव",
+
+    "consultationFee": "परामर्श शुल्क",
+    "bookAppointment": "अपोइन्टमेन्ट बुक गर्नुहोस्",
+
+    "noDoctorsFound": "कुनै डाक्टर भेटिएन",
+
+    "specialties": {
+      "Dermatologist": "छाला रोग विशेषज्ञ",
+      "Cardiologist": "हृदय रोग विशेषज्ञ",
+      "Pediatrician": "बाल रोग विशेषज्ञ",
+      "General Physician": "सामान्य चिकित्सक",
+      "Gynecologist": "स्त्री रोग विशेषज्ञ",
+      "Orthopedic": "हाडजोर्नी विशेषज्ञ",
+      "Neurologist": "नसासम्बन्धी रोग विशेषज्ञ",
+      "ENT Specialist": "कान, नाक तथा घाँटी विशेषज्ञ",
+      "Psychiatrist": "मनोचिकित्सक",
+      "Ophthalmologist": "नेत्र रोग विशेषज्ञ",
+      "Dentist": "दन्त चिकित्सक",
+      "Nutritionist": "पोषण विशेषज्ञ"
+    },
+
+    "availability": {
+      "Available today": "आज उपलब्ध",
+      "Available tomorrow": "भोलि उपलब्ध"
+    }
   }
 }

@@ -253,5 +253,79 @@
     "previous": "Previous",
     "next": "Next",
     "goToImage": "Go to image {{number}}"
+  },
+  "hospitalPage": {
+    "trustedCare": "TRUSTED CARE",
+    "title": "Find a hospital and book an appointment",
+    "description": "Search for a hospital by name, location or phone number.",
+    "searchPlaceholder": "Search hospital by name or location",
+    "search": "Search",
+    "availableHospitals": "Available hospitals",
+    "hospitalsFound": "{{count}} hospitals found",
+    "bookAppointment": "Book appointment",
+    "noHospitals": "No hospitals found."
+  },
+  "findDoctor": {
+    "trustedCare": "TRUSTED CARE",
+    "title": "Find a doctor and book a time",
+    "description": "Search by name, specialty or symptom, then pick the next open slot",
+    "searchPlaceholder": "Search by doctor name or specialty",
+    "search": "Search",
+
+    "filter": "Filter",
+    "hideFilters": "Hide Filters",
+    "resetFilters": "Reset Filters",
+    "advancedFilters": "Advanced Filters:",
+
+    "allSpecialties": "All Specialties",
+    "allAvailability": "All Availability",
+    "allGenders": "All Genders",
+    "allExperience": "All Experience",
+
+    "availableToday": "Available today",
+    "availableTomorrow": "Available tomorrow",
+
+    "female": "Female",
+    "male": "Male",
+
+    "fivePlusYears": "5+ Years",
+    "tenPlusYears": "10+ Years",
+
+    "defaultSort": "Default Sort",
+    "feeLowToHigh": "Fee: Low to High",
+    "feeHighToLow": "Fee: High to Low",
+    "experienceHighToLow": "Experience: High to Low",
+
+    "maxConsultationFee": "Max Consultation Fee: Rs. {{amount}}",
+
+    "availableDoctors": "Available doctors",
+    "doctorsFound": "{{count}} doctors found",
+
+    "yearsExperience": "{{count}} years experience",
+
+    "consultationFee": "Consultation fee",
+    "bookAppointment": "Book appointment",
+
+    "noDoctorsFound": "No doctors found",
+
+    "specialties": {
+      "Dermatologist": "Dermatologist",
+      "Cardiologist": "Cardiologist",
+      "Pediatrician": "Pediatrician",
+      "General Physician": "General Physician",
+      "Gynecologist": "Gynecologist",
+      "Orthopedic": "Orthopedic",
+      "Neurologist": "Neurologist",
+      "ENT Specialist": "ENT Specialist",
+      "Psychiatrist": "Psychiatrist",
+      "Ophthalmologist": "Ophthalmologist",
+      "Dentist": "Dentist",
+      "Nutritionist": "Nutritionist"
+    },
+
+    "availability": {
+      "Available today": "Available today",
+      "Available tomorrow": "Available tomorrow"
+    }
   }
 }

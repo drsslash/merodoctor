@@ -125,7 +125,9 @@ function Navbar({ setPage }) {
             {t("navbar.specialistVideoConsultation")}
           </button>
 
+          {/* Book Hospital */}
           <button
+            onClick={() => goToPage("book-hospital")}
             className="
               px-3
               py-2
@@ -417,7 +419,9 @@ function Navbar({ setPage }) {
                 {t("navbar.specialistVideoConsultation")}
               </button>
 
+              {/* Book Hospital */}
               <button
+                onClick={() => goToPage("book-hospital")}
                 className="
                   text-left
                   text-[14px]
