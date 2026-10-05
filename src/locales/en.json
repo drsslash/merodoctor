@@ -1,0 +1,375 @@
+{
+  
+  "dashboard": {
+  "heroTitle": "Keep yourself and your family healthy",
+  "heroDescription": "Consult NMC-verified doctors from home, book hospital visits and keep every prescription in one place.",
+  "findDoctor": "Find a doctor",
+  "familyImageAlt": "Happy family",
+
+  "nextAvailableSlots": "Next available slots",
+  "slotsDescription": "The earliest time a specialist doctor is free in each specialty",
+  "viewAllSpecialties": "View all specialties",
+
+  "today": "TODAY",
+  "tomorrow": "TOMORROW",
+  "book": "Book",
+
+  "slots": {
+    "General medicine": "General medicine",
+    "Gynaecology": "Gynaecology",
+    "Paediatrics": "Paediatrics"
+  },
+
+  "notSureTitle": "Not sure who to see?",
+  "searchDescription": "Search by symptom, specialty, doctor or hospital.",
+  "searchPlaceholder": "e.g. \"chest pain\", \"dermatologist\", \"Om Hospital\"",
+  "search": "Search",
+
+  "popular": "Popular",
+
+  "popularItems": {
+    "Fever": "Fever",
+    "Skin": "Skin",
+    "Gynaecology": "Gynaecology",
+    "Child health": "Child health",
+    "Mental health": "Mental health"
+  },
+
+  "instantConsultation": "FREE INSTANT CONSULTATION",
+  "free": "FREE",
+  "doctorAvailable": "Doctor available now",
+  "doctorHours": "In-house doctor · 7 AM–9 PM daily",
+  "startInstantConsultation": "Start free instant consultation",
+  "privateEncrypted": "Closes at 9 PM · Private & encrypted"
+},
+  
+  "home": {
+    "title": "See a doctor",
+    "titleLine2": "without leaving home",
+    "description": "Video consultations with 200+ verified doctors across 15+ specialties. Book in under two minutes, pay with eSewa, Khalti or Connect IPS, and get your prescription digitally.",
+    "verifiedDoctors": "Verified doctors",
+    "specialties": "Specialties",
+    "online": "Online",
+    "consultFromHome": "Consult from home",
+    "doctorsOnline": "DOCTORS ONLINE NOW",
+    "scrollMore": "Scroll to see more"
+  },
+  "login": {
+    "welcomeBack": "Welcome Back",
+    "description": "Log in to manage your appointments and consultations.",
+    "mobileNumber": "Mobile number",
+    "password": "Password",
+    "enterPassword": "Enter your password",
+    "forgotPassword": "Forget Your Password?",
+    "loginWithOtp": "Login with OTP instead.",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "signup": "Sign up"
+  },
+
+  "signup": {
+    "title": "Create your account",
+    "description": "Enter your mobile number to get started. We will check if you already have an account.",
+    "mobileNumber": "Mobile number",
+    "otpMessage": "We will send a 6-digit OTP to verify this number.",
+    "continue": "Continue",
+    "terms": "By continuing, you agree to our Terms of Service and Privacy Policy.",
+    "haveAccount": "Already have an account?",
+    "login": "Log in"
+  },
+
+  "otp": {
+    "back": "BACK",
+    "step": "Step 1 of 4",
+    "title": "OTP Verification",
+    "description": "A verification code has been sent to your mobile number.",
+    "enterCode": "Enter the 6-digit code below.",
+    "resend": "Resend OTP",
+    "verify": "Verify & Continue",
+    "terms": "By continuing, you agree to our Terms of Service and Privacy Policy.",
+    "haveAccount": "Already have an account?",
+    "login": "Log in"
+  },
+
+  "navbar": {
+  "findDoctors": "Find Doctors",
+  "instantConsultation": "Free Instant Consultation",
+  "login": "Log in",
+  "bookAppointment": "Log in",
+  "specialistVideoConsultation": "Specialist Video Consultation",
+  "bookhospital" : "Book Hospital Appointment"
+  },
+
+  "siderbar": {
+    "mobileNumber": "Mobile Number",
+    "personalDetails": "Personal Details",
+    "address": "Address",
+    "setPassword": "Set password",
+    "verified" : "Verified",
+    "inProgress" : "In progress",
+    "next" : "Next",
+    "later" : "Later",
+    "step1" : "Step 1 of 4",
+    "step2" : "Step 2 of 4",
+    "step3" : "Step 3 of 4",
+    "step4" : "Step 4 of 4"
+  },
+
+  "information": {
+    "yourInformation": "Your Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "age": "Age",
+    "dateOfBirth": "Date of Birth",
+    "mobileNumber": "Mobile Number",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "email": "Email",
+
+    "address": "Address",
+    "district": "District",
+    "village": "Village / Municipality",
+    "ward": "Ward",
+    "tole": "Tole",
+    "save": "Save",
+    "option": "Option",
+
+    "setpassword": "Set Your Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordRequirements": "Password Requirements",
+    "atLeastSixCharacters": "At least 6 characters",
+    "atLeastOneUppercaseLetter": "At least 1 uppercase letter",
+    "atLeastOneSpecialCharacter": "At least 1 special character" 
+  },
+  "home2": {
+    "happyPatients": "Happy Patients",
+    "title": "What our patients say",
+    "description": "Thousands of patients trust Mero Doctor for convenient and reliable online healthcare.",
+    "reviews": "Reviews",
+
+    "dermatology": "Dermatology",
+    "sabitaQuote": "The doctor was very helpful and explained everything clearly. I am very satisfied with the consultation.",
+    "sabitaName": "Sabita KC",
+    "kathmandu": "Kathmandu",
+
+    "pediatricFollowUp": "Pediatric Follow-up",
+    "nikeshQuote": "The follow-up consultation was quick and easy. I could talk to the doctor from home.",
+    "nikeshName": "Nikesh Rai",
+    "itahari": "Itahari",
+
+    "instantConsultation": "Instant Consultation",
+    "upaQuote": "I needed a doctor quickly and Mero Doctor made the consultation very easy.",
+    "upaName": "Upa Devi",
+    "pokhara": "Pokhara",
+
+    "generalConsultation": "General Consultation",
+    "sumanQuote": "Booking an appointment was simple and the doctor was very professional.",
+    "sumanName": "Suman Thapa",
+    "lalitpur": "Lalitpur",
+
+    "quickAppointment": "Quick Appointment",
+    "priyaQuote": "I was able to book an appointment without any hassle. The whole process was smooth.",
+    "priyaName": "Priya Shrestha",
+    "bhaktapur": "Bhaktapur",
+
+    "digitalPrescription": "Digital Prescription",
+    "aashishQuote": "Getting my prescription digitally was convenient and saved me a lot of time.",
+    "aashishName": "Aashish Gurung",
+    "chitwan": "Chitwan",
+
+    "easyConsultation": "Easy Consultation",
+    "bikashQuote": "The online consultation was simple, convenient and saved me a trip to the hospital.",
+    "bikashName": "Bikash Adhikari",
+
+    "doctorAvailability": "Doctor Availability",
+    "saritaQuote": "I could easily find an available doctor and get the help I needed.",
+    "saritaName": "Sarita Rai",
+    "biratnagar": "Biratnagar",
+
+    "onlineFollowUp": "Online Follow-up",
+    "rameshQuote": "Online follow-up made it much easier to continue my treatment from home.",
+    "rameshName": "Ramesh Karki",
+    "dharan": "Dharan",
+
+    "readAllReviews": "Read All Reviews"
+  },
+
+  "home3": {
+    "whyMeroDoctor": "Why Mero Doctor",
+    "title": "Benefits of online consultation",
+    "description": "Hassle-free healthcare from the comfort of your home",
+
+    "consultTopDoctors": {
+      "title": "Consult top doctors 24x7",
+      "description": "Connect instantly with a specialist or choose a doctor for a video visit."
+    },
+
+    "convenientEasy": {
+      "title": "Convenient and easy",
+      "description": "Start a consultation within two minutes or book a video call."
+    },
+
+    "safeConsultations": {
+      "title": "100% safe consultations",
+      "description": "Your consultation is private, secure and protected."
+    },
+
+    "similarClinic": {
+      "title": "Similar clinic experience",
+      "description": "Have a face-to-face video call with the doctor from home."
+    },
+
+    "freeFollowUp": {
+      "title": "Free follow-up",
+      "description": "Get seven days of free follow-up after your consultation."
+    },
+
+    "digitalPrescription": {
+      "title": "Easy digital prescription",
+      "description": "Receive your prescription digitally without visiting a doctor."
+    }
+  },
+
+"footer": {
+    "description": "The quickest way to book an appointment and consult online with top doctors in Nepal.",
+
+    "company": "Company",
+    "home": "Home",
+    "aboutUs": "About us",
+    "faqs": "FAQs",
+
+    "quickLogin": "Quick login",
+    "patient": "Patient",
+    "partners": "Partners",
+    "doctors": "Doctors",
+
+    "services": "Services",
+    "findDoctors": "Find doctors",
+    "freeInstantConsultation": "Free instant consultation",
+    "videoConsultation": "Video consultation",
+    "hospitalAppointments": "Hospital appointments",
+
+    "getInTouch": "Get in touch",
+    "address": "Pani Pokhari, Kathmandu, Nepal",
+
+    "copyright": "© 2026 Mero Doctor. All rights reserved.",
+    "terms": "Terms & conditions",
+    "privacy": "Privacy policy"
+  },
+  "home5": {
+    "joinNetwork": "Join our network",
+    "title": "Partner with us for a healthier Nepal",
+    "description": "Together we can make quality healthcare more accessible.",
+
+    "clinicsLabs": "For clinics & labs",
+    "healthPartner": "Become our health partner",
+    "healthPartnerDescription": "List your lab, polyclinic or pharmacy on Mero Doctor and receive bookings from patients across Nepal.",
+
+    "doctors": "For doctors",
+    "doctorPartner": "Become our doctor",
+    "doctorPartnerDescription": "Join 200+ verified practitioners consulting online. Set your own hours and consultation fee.",
+
+    "applyNow": "Apply now"
+  },
+
+  "home4": {
+    "experienceMeroDoctor": "Experience Mero Doctor",
+    "title": "From finding a doctor to getting your prescription",
+    "description": "Easy healthcare, easy consultation, easy interaction.",
+
+    "findDoctor": "Find your doctor",
+    "findDoctorDescription": "Search by specialty, hospital or symptom, and see who is available now.",
+
+    "bookAppointment": "Book an appointment",
+    "bookAppointmentDescription": "Pick a slot from the doctor's availability and confirm in seconds.",
+
+    "paySecurely": "Pay securely",
+    "paySecurelyDescription": "Pay the fee with eSewa, Khalti, or Connect IPS.",
+
+    "consultAndGetReport": "Consult and get your report",
+    "consultAndGetReportDescription": "Join the video call at your time, then get your prescription digitally.",
+
+    "imageAlt": "Mero Doctor consultation",
+    "playVideo": "Play video",
+    "previous": "Previous",
+    "next": "Next",
+    "goToImage": "Go to image {{number}}"
+  },
+  "hospitalPage": {
+    "trustedCare": "TRUSTED CARE",
+    "title": "Find a hospital and book an appointment",
+    "description": "Search for a hospital by name, location or phone number.",
+    "searchPlaceholder": "Search hospital by name or location",
+    "search": "Search",
+    "availableHospitals": "Available hospitals",
+    "hospitalsFound": "{{count}} hospitals found",
+    "bookAppointment": "Book appointment",
+    "noHospitals": "No hospitals found."
+  },
+  "findDoctor": {
+    "trustedCare": "TRUSTED CARE",
+    "title": "Find a doctor and book a time",
+    "description": "Search by name, specialty or symptom, then pick the next open slot",
+    "searchPlaceholder": "Search by doctor name or specialty",
+    "search": "Search",
+
+    "filter": "Filter",
+    "hideFilters": "Hide Filters",
+    "resetFilters": "Reset Filters",
+    "advancedFilters": "Advanced Filters:",
+
+    "allSpecialties": "All Specialties",
+    "allAvailability": "All Availability",
+    "allGenders": "All Genders",
+    "allExperience": "All Experience",
+
+    "availableToday": "Available today",
+    "availableTomorrow": "Available tomorrow",
+
+    "female": "Female",
+    "male": "Male",
+
+    "fivePlusYears": "5+ Years",
+    "tenPlusYears": "10+ Years",
+
+    "defaultSort": "Default Sort",
+    "feeLowToHigh": "Fee: Low to High",
+    "feeHighToLow": "Fee: High to Low",
+    "experienceHighToLow": "Experience: High to Low",
+
+    "maxConsultationFee": "Max Consultation Fee: Rs. {{amount}}",
+
+    "availableDoctors": "Available doctors",
+    "doctorsFound": "{{count}} doctors found",
+
+    "yearsExperience": "{{count}} years experience",
+
+    "consultationFee": "Consultation fee",
+    "bookAppointment": "Book appointment",
+
+    "noDoctorsFound": "No doctors found",
+
+    "specialties": {
+      "Dermatologist": "Dermatologist",
+      "Cardiologist": "Cardiologist",
+      "Pediatrician": "Pediatrician",
+      "General Physician": "General Physician",
+      "Gynecologist": "Gynecologist",
+      "Orthopedic": "Orthopedic",
+      "Neurologist": "Neurologist",
+      "ENT Specialist": "ENT Specialist",
+      "Psychiatrist": "Psychiatrist",
+      "Ophthalmologist": "Ophthalmologist",
+      "Dentist": "Dentist",
+      "Nutritionist": "Nutritionist"
+    },
+
+    "availability": {
+      "Available today": "Available today",
+      "Available tomorrow": "Available tomorrow"
+    }
+  }
+}
