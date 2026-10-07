@@ -5,12 +5,55 @@ import {
   RightOutlined,
   SearchOutlined,
   UserOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import familyImage from "../assets/family.png";
 
 // ================= DATA =================
+const doctors = [
+  {
+    id: 1,
+    name: "Dr. Anisha Sharma",
+    specialty: "Dermatologist",
+    experienceYears: 8,
+    feeValue: 800,
+    availability: "Available today",
+    time: "10:00 AM - 5:00 PM",
+    gender: "Female",
+  },
+  {
+    id: 2,
+    name: "Dr. Ramesh Thapa",
+    specialty: "Cardiologist",
+    experienceYears: 12,
+    feeValue: 1200,
+    availability: "Available today",
+    time: "11:00 AM - 4:00 PM",
+    gender: "Male",
+  },
+  {
+    id: 3,
+    name: "Dr. Priya Karki",
+    specialty: "Pediatrician",
+    experienceYears: 6,
+    feeValue: 700,
+    availability: "Available tomorrow",
+    time: "9:00 AM - 3:00 PM",
+    gender: "Female",
+  },
+  {
+    id: 4,
+    name: "Dr. Suman Adhikari",
+    specialty: "General Physician",
+    experienceYears: 10,
+    feeValue: 600,
+    availability: "Available today",
+    time: "12:00 PM - 6:00 PM",
+    gender: "Male",
+  }
+];
 
 const SLOTS = [
   {
@@ -99,6 +142,67 @@ function SlotCard({ slot, t }) {
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function DoctorCard({ doctor, setPage }) {
+  return (
+    <div className="flex-1 rounded-lg border border-[#e6eaee] bg-white p-5 py-6 text-left shadow-sm flex flex-col justify-between">
+      <div>
+        {/* Profile Avatar & Bookmark Icon Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#e9eef2] text-[#687685]">
+            <UserOutlined className="text-[20px]" />
+          </div>
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 border border-gray-200 text-gray-500 hover:text-[#f5224b] hover:border-[#f5224b] transition-colors cursor-pointer">
+            <StarOutlined className="text-[14px]" />
+          </button>
+        </div>
+
+        {/* Name below profile */}
+        <div className="mb-3">
+          <h3 className="text-[16px] font-semibold text-[#1d2b36] m-0 leading-[22px]">
+            {doctor.name}
+          </h3>
+          <p className="text-[13px] text-[#687685] m-0 mt-0.5">
+            {doctor.specialty}
+          </p>
+        </div>
+
+        {/* Experience & Price side by side with a line in between */}
+        <div className="mt-4 pt-3 border-t border-gray-100">
+          <div className="flex items-center justify-between text-[12px]">
+            <span className="text-[#8a96a3]">
+              <span className="font-medium text-[#1d2b36]">{doctor.experienceYears} years</span> experience
+            </span>
+            <div className="h-4 w-[1px] bg-gray-200 mx-2"></div>
+            <span className="font-semibold text-[#1d2b36]">
+              Rs {doctor.feeValue}
+            </span>
+          </div>
+          <div className="mt-2 inline-flex items-center justify-center rounded-full bg-gray-50 border border-gray-200 px-6 py-4 text-[12px] font-medium text-gray-600">
+            {doctor.time}
+          </div>
+        </div>
+      </div>
+
+      {/* Action Buttons Side-by-side */}
+      <div className="mt-3 flex items-center gap-2">
+        <p
+          onClick={() => setPage("doctors")}
+          className="cursor-pointer text-[10px] leading-[20px] font-semibold text-blue-500 underline"
+        >
+          View Profile
+        </p>
+        <Button
+          type="primary"
+          onClick={() => setPage("doctors")}
+          className="!h-[36px] !w-[100px] !rounded-md !border-[#f5224b] !bg-[#f5224b] !text-[12px] !font-semibold flex-1"
+        >
+          Book Appointment
+        </Button>
       </div>
     </div>
   );
@@ -320,6 +424,130 @@ function Dashboard({ setPage }) {
           </div>
         </div>
       </section>
+
+      {/* ================= DOCTORS SECTION ================= */}
+
+      <div className="!text-left bg-gray-100 flex items-center justify-between w-full relative">
+
+        {/* LEFT ARROW - OUTSIDE THE CONTENT MARGIN */}
+        <button
+          className="
+            absolute
+            left-15
+            top-1/2
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-white
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <LeftOutlined className="text-[9px]" />
+        </button>
+
+        <div className="max-w-7xl w-[1190px] mx-auto px-6 sm:px-10 lg:px-16 py-10">
+          {/* Overline */}
+          <p
+            className="
+              text-[12px]
+              leading-[16px]
+              font-semibold
+              text-rose-500
+              uppercase
+              !mb-2
+            "
+          >
+            Trusted Care
+          </p>
+
+          {/* Heading H2 */}
+          <h2
+            className="
+              text-[32px]
+              leading-[40px]
+              font-semibold
+              !text-black
+            "
+          >
+            Appointments with Doctors
+          </h2>
+
+          <div className="flex items-center justify-between mt-2">
+            {/* Body Medium */}
+            <p
+              className="
+                text-[12px]
+                leading-[24px]
+                font-normal
+                !text-gray-700
+                mb-0
+              "
+            >
+              200+ experienced practitioners available for video consultations and appointments.
+            </p>
+
+            <p
+              onClick={() => setPage("find-doctor")}
+              className="text-[12px]
+                leading-[24px]
+                font-semibold
+                !text-black
+                mb-0
+                cursor-pointer
+                hover:text-[#f5224b]
+              "
+            >
+              View all doctors <RightOutlined className="text-[9px]" />
+            </p>
+          </div>
+
+          {/* Doctors Grid */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+
+            {doctors.map((doc) => (
+              <DoctorCard key={doc.id} doctor={doc} setPage={setPage} />
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT ARROW - OUTSIDE THE CONTENT MARGIN */}
+        <button
+          className="
+            absolute
+            right-15
+            top-1/2
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-white
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <RightOutlined className="text-[9px]" />
+        </button>
+
+      </div>
     </div>
   );
 }

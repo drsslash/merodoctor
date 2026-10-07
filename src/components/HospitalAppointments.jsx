@@ -114,7 +114,6 @@ function HospitalAppointments({ setPage }) {
                   !leading-[20px]
                   !font-semibold
                   !text-white
-                 
                 "
               >
                 {t("hospitalPage.title")}

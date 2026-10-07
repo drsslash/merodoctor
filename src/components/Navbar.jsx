@@ -389,7 +389,7 @@ function Navbar({
                   !hover:text-[#f5224b]
                 "
               >
-                <BellOutlined className="text-[15px]" />
+                <BellOutlined className="text-[14px]" />
               </button>
 
               {/* PROFILE */}
@@ -440,7 +440,7 @@ function Navbar({
 
                   <span
                     className="
-                      text-[13px]
+                      text-[14px]
                       leading-[20px]
                       font-medium
                     "
