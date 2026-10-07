@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button } from "antd";
 import {
   LeftOutlined,
@@ -10,6 +10,10 @@ import {
 import { useTranslation } from "react-i18next";
 
 import familyImage from "../assets/family.png";
+import familyImage1 from "../assets/family1.png";
+import familyImage2 from "../assets/family2.png";
+import familyImage3 from "../assets/family3.png";
+import familyImage4 from "../assets/family4.png";
 
 // ================= DATA =================
 const doctors = [
@@ -82,12 +86,46 @@ const SLOTS = [
   },
 ];
 
+const SPECIALTIES = [
+  "ENT",
+  "Cardiology",
+  "Female Health",
+  "Child Care",
+];
+
 const POPULAR = [
   "Fever",
   "Skin",
   "Gynaecology",
   "Child health",
   "Mental health",
+];
+
+const HOSPITALS = [
+  {
+    id: 1,
+    name: "Grande International Hospital",
+    city: "Kathmandu",
+    phone: "01-5159266",
+    image:
+      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 2,
+    name: "Norvic International Hospital",
+    city: "Kathmandu",
+    phone: "01-4258554",
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 3,
+    name: "Nepal Mediciti Hospital",
+    city: "Lalitpur",
+    phone: "01-4217766",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80",
+  },
 ];
 
 // ================= SMALL PIECES =================
@@ -182,7 +220,7 @@ function DoctorCard({ doctor, setPage }) {
               Rs {doctor.feeValue}
             </span>
           </div>
-          <div className="mt-2 inline-flex items-center justify-center rounded-full bg-gray-50 border border-gray-200 px-6 py-4 text-[12px] font-medium text-gray-600">
+          <div className="mt-2 inline-flex items-center justify-center rounded-full bg-gray-50 border border-gray-200 px-8 py-6 text-[12px] font-medium text-gray-600">
             {doctor.time}
           </div>
         </div>
@@ -208,12 +246,62 @@ function DoctorCard({ doctor, setPage }) {
   );
 }
 
+function SpecialistCard({ specialtyName, setPage }) {
+  return (
+    <div className="flex-1 rounded-lg border border-[#e6eaee] bg-white p-5 py-3 text-left shadow-sm flex flex-col justify-between">
+      <div>
+        {/* Profile Avatar & Bookmark Icon Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#e9eef2] text-[#687685]">
+            <UserOutlined className="text-[20px]" />
+          </div>
+         <RightOutlined className="text-[12px] text-gray-400" />
+        </div>
+
+        {/* Name below profile with '>' */}
+        <div className="mb-1">
+          <div className="flex items-center justify-between">
+            <h3 className="text-[16px] font-semibold text-[#1d2b36] m-0 leading-[22px]">
+              {specialtyName}
+            </h3>
+            
+          </div>
+          <p className="text-[13px] text-[#687685] m-0 mt-0.5">
+            Specialized Care
+          </p>
+        </div>
+
+        {/* 2 Doctors & Available Today side by side */}
+        <div className="mt-1 pt-3 border-t border-gray-100">
+          <div className="flex items-center justify-between text-[12px]">
+            <span className="font-medium text-[#1d2b36]">
+              2 Doctors
+            </span>
+            <div className="h-4 w-[1px] bg-gray-200 mx-2"></div>
+            <span className="inline-flex items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 px-3 py-0.5 text-[11px] font-medium text-emerald-600">
+              Available today
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ================= DASHBOARD =================
 
 function Dashboard({ setPage }) {
   const { t } = useTranslation();
 
-  const slide = 1;
+  const [slide, setSlide] = useState(0);
+
+  const familyImages = [
+    familyImage,
+    familyImage1,
+    familyImage2,
+    familyImage3,
+    familyImage4,
+  ];
 
   return (
     <div
@@ -247,31 +335,60 @@ function Dashboard({ setPage }) {
             {/* ---------- Slide controls ---------- */}
 
             <div className="!mt-5 !mb-2 inline-flex items-center gap-2">
-              <LeftOutlined className="!text-[11px] !text-white/70" />
+              <button
+                type="button"
+                onClick={() =>
+                  setSlide((prev) =>
+                    prev === 0 ? familyImages.length - 1 : prev - 1
+                  )
+                }
+                className="cursor-pointer"
+              >
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+  <LeftOutlined className="!text-[11px] !text-white/70" />
+</div>
+              </button>
 
               <div className="flex items-center gap-1">
-                <span className="h-[3px] w-5 rounded bg-white" />
-
-                {[0, 1, 2, 3].map((i) => (
-                  <span
+                {familyImages.map((_, i) => (
+                  <button
                     key={i}
-                    className="h-[3px] w-3 rounded bg-white/25"
+                    type="button"
+                    onClick={() => setSlide(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={`h-[3px] rounded cursor-pointer transition-all ${
+                      slide === i
+                        ? "w-5 bg-white"
+                        : "w-3 bg-white/25"
+                    }`}
                   />
                 ))}
               </div>
 
               <span className="text-[12px] leading-[16px] font-normal text-white/70">
-                {slide} / 5
+                {slide + 1} / {familyImages.length}
               </span>
 
-              <RightOutlined className="!text-[11px] !text-white" />
+              <button
+                type="button"
+                onClick={() =>
+                  setSlide((prev) =>
+                    prev === familyImages.length - 1 ? 0 : prev + 1
+                  )
+                }
+                className="cursor-pointer"
+              >
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                  <RightOutlined className="!text-[11px] !text-white" />
+                </div>
+              </button>
             </div>
           </div>
 
           {/* ---------- Hero image ---------- */}
 
           <img
-            src={familyImage}
+            src={familyImages[slide]}
             alt={t("dashboard.familyImageAlt")}
             className="
               hidden
@@ -429,12 +546,11 @@ function Dashboard({ setPage }) {
 
       <div className="!text-left bg-gray-100 flex items-center justify-between w-full relative">
 
-        {/* LEFT ARROW - OUTSIDE THE CONTENT MARGIN */}
         <button
           className="
             absolute
             left-15
-            top-1/2
+            top-[58%]
             -translate-y-1/2
             z-10
             hidden
@@ -447,7 +563,7 @@ function Dashboard({ setPage }) {
             rounded-full
             border
             border-[#e1e5e9]
-            bg-white
+            bg-gray-100
             text-[#687685]
             sm:flex
           "
@@ -456,7 +572,6 @@ function Dashboard({ setPage }) {
         </button>
 
         <div className="max-w-7xl w-[1190px] mx-auto px-6 sm:px-10 lg:px-16 py-10">
-          {/* Overline */}
           <p
             className="
               text-[12px]
@@ -470,7 +585,6 @@ function Dashboard({ setPage }) {
             Trusted Care
           </p>
 
-          {/* Heading H2 */}
           <h2
             className="
               text-[32px]
@@ -483,7 +597,6 @@ function Dashboard({ setPage }) {
           </h2>
 
           <div className="flex items-center justify-between mt-2">
-            {/* Body Medium */}
             <p
               className="
                 text-[12px]
@@ -512,21 +625,313 @@ function Dashboard({ setPage }) {
           </div>
 
           {/* Doctors Grid */}
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-
             {doctors.map((doc) => (
               <DoctorCard key={doc.id} doctor={doc} setPage={setPage} />
             ))}
           </div>
         </div>
 
-        {/* RIGHT ARROW - OUTSIDE THE CONTENT MARGIN */}
         <button
           className="
             absolute
             right-15
-            top-1/2
+            top-[58%]
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-gray-100
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <RightOutlined className="text-[9px]" />
+        </button>
+
+      </div>
+      
+      {/* ================= SPECIALTIES SECTION ================= */}
+
+      <div className="!text-left bg-gray-100 flex items-center justify-between w-full relative">
+
+        <button
+          className="
+            absolute
+            left-15
+            top-[58%]
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-gray-100
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <LeftOutlined className="text-[9px]" />
+        </button>
+
+        <div className="max-w-7xl w-[1190px] mx-auto px-6 sm:px-10 lg:px-16 py-10 bg-gray-100">
+          <p
+            className="
+              text-[12px]
+              leading-[16px]
+              font-semibold
+              text-rose-500
+              uppercase
+              !mb-2
+            "
+          >
+            Explore Care
+          </p>
+
+          <h2
+            className="
+              text-[32px]
+              leading-[40px]
+              font-semibold
+              !text-black
+            "
+          >
+            Video Consultation across 15+ Specialties
+          </h2>
+
+          <div className="flex items-center justify-between mt-2">
+            <p
+              className="
+                text-[12px]
+                leading-[24px]
+                font-normal
+                !text-gray-700
+                mb-0
+              "
+            >
+              Pick a department and book a specialist video visit at a time that suits you
+            </p>
+            <p
+              onClick={() => setPage("specialist-video-consultation")}
+              className="text-[12px]
+                leading-[24px]
+                font-semibold
+                !text-black
+                mb-0
+                cursor-pointer
+                hover:text-[#f5224b]
+              "
+            >
+              View all specialties <RightOutlined className="text-[9px]" />
+            </p>
+          </div>
+
+          {/* Specialties 4-in-a-row Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            {SPECIALTIES.map((specName, index) => (
+              <SpecialistCard key={index} specialtyName={specName} setPage={setPage} />
+            ))}
+          </div>
+        </div>
+
+        <button
+          className="
+            absolute
+            right-15
+            top-[58%]
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-gray-100
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <RightOutlined className="text-[9px]" />
+        </button>
+      </div>
+
+      <div className="!text-left bg-white flex items-center justify-between w-full relative">
+        <button
+          className="
+            absolute
+            left-15
+            top-[58%]
+            -translate-y-1/2
+            z-10
+            hidden
+            h-8
+            w-8
+            flex-shrink-0
+            cursor-pointer
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#e1e5e9]
+            bg-white
+            text-[#687685]
+            sm:flex
+          "
+        >
+          <LeftOutlined className="text-[9px]" />
+        </button>
+        <div className="max-w-7xl w-[1190px] mx-auto px-6 sm:px-10 lg:px-16 py-10">
+          <p
+            className="
+              text-[12px]
+              leading-[16px]
+              font-semibold
+              text-rose-500
+              uppercase
+              !mb-2
+            "
+          >
+            Hospital Visits
+          </p>
+
+          <h2
+            className="
+              text-[32px]
+              leading-[40px]
+              font-semibold
+              !text-black
+            "
+          >
+            Book appointments at a hospital
+          </h2>
+
+          <div className="flex items-center justify-between mt-2">
+            <p
+              className="
+                text-[12px]
+                leading-[24px]
+                font-normal
+                !text-gray-700
+                mb-0
+              "
+            >
+              Skip the queue - book a slot at top hospitals in Nepal from anywhere
+            </p>
+
+            <p
+              onClick={() => setPage("book-hospital")}
+              className="text-[12px]
+                leading-[24px]
+                font-semibold
+                !text-black
+                mb-0
+                cursor-pointer
+                hover:text-[#f5224b]
+              "
+            >
+              View all hospitals <RightOutlined className="text-[9px]" />
+            </p>
+          </div>
+
+          {/* Hospital Cards - 3 in a row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+            {HOSPITALS.map((hospital) => (
+              <div
+                key={hospital.id}
+                className="
+                  bg-white
+                  rounded-2xl
+                  overflow-hidden
+                  border
+                  border-gray-200
+                  shadow-sm
+                  hover:shadow-md
+                  transition-shadow
+                "
+              >
+                <div className="w-full h-[140px] overflow-hidden">
+                  <img
+                    src={hospital.image}
+                    alt={hospital.name}
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                      hover:scale-105
+                      transition-transform
+                      duration-300
+                    "
+                  />
+                </div>
+
+                <div className="p-4">
+                  <h3
+                    className="
+                      text-[18px]
+                      leading-[24px]
+                      font-semibold
+                      text-[#243b49]
+                    "
+                  >
+                    {hospital.name}
+                  </h3>
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-2
+                      text-[13px]
+                      leading-[20px]
+                      font-normal
+                      text-gray-500
+                      mb-2
+                    "
+                  >
+                    <span>{hospital.city}</span>
+                  </div>
+
+                  <Button
+                    type="primary"
+                    block
+                    onClick={() => setPage("book-hospital")}
+                    className="
+                      !h-9
+                      !rounded-lg
+                      !bg-[#f5224b]
+                      !border-[#f5224b]
+                      !text-[13px]
+                      !leading-[20px]
+                      !font-semibold
+                    "
+                  >
+                    Book Appointment
+                  </Button>
+                </div>
+                <button
+          className="
+            absolute
+            right-15
+            top-[58%]
             -translate-y-1/2
             z-10
             hidden
@@ -546,7 +951,10 @@ function Dashboard({ setPage }) {
         >
           <RightOutlined className="text-[9px]" />
         </button>
-
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
