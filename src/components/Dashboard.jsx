@@ -954,7 +954,64 @@ function Dashboard({ setPage }) {
               </div>
             ))}
           </div>
-        </div>
+      </div>
+      </div>
+      <div className="!text-left bg-white flex items-center justify-between w-full relative">
+            <div className="max-w-7xl w-[1190px] mx-auto px-6 sm:px-10 lg:px-16 py-10">
+          <p
+            className="
+              text-[12px]
+              leading-[16px]
+              font-semibold
+              text-rose-500
+              uppercase
+              !mb-2
+            "
+          >
+            Not Sure Where To start
+          </p>
+
+          <h2
+            className="
+              text-[32px]
+              leading-[40px]
+              font-semibold
+              !text-black
+            "
+          >
+            Not feeling well? Start with a symptom
+          </h2>
+
+          <div className="flex items-center justify-between mt-2">
+            <p
+              className="
+                text-[12px]
+                leading-[24px]
+                font-normal
+                !text-gray-700
+                mb-0
+              "
+            >
+              Pick everything you're feeling - we'll suggest the right department and doctor 
+            </p>
+
+            <p
+              onClick={() => setPage("book-hospital")}
+              className="text-[12px]
+                leading-[24px]
+                font-semibold
+                !text-black
+                mb-0W
+                cursor-pointer
+                hover:text-[#f5224b]
+              "
+            >
+              All symptoms <RightOutlined className="text-[9px]" />
+            </p>
+          </div>
+          </div>
+
+        
       </div>
     </div>
   );
